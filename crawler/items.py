@@ -6,9 +6,18 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy.loader import ItemLoader
+from scrapy.loader.processors import TakeFirst, Join
 
 
-class CrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class ExistItem(scrapy.Item):
+    url = scrapy.Field()
+    brand = scrapy.Field()
+    model = scrapy.Field()
+
+
+class ExistItemLoader(ItemLoader):
+    url_out = TakeFirst()
+    brand_out = TakeFirst()
+    model_in = Join()
+    model_out = TakeFirst()
