@@ -11,7 +11,7 @@ import json
 
 class JsonWriterPipeline(object):
     def open_spider(self, spider):
-        self.file = open('exist.json', 'w')
+        self.file = open('exist_model.json', 'w')
 
     def close_spider(self, spider):
         self.file.close()
